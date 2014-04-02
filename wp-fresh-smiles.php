@@ -76,7 +76,7 @@ function wfs_admin() {
         </tr>
       </tbody></table>
 
-      <input type="hidden" name="action" value="toz_rk_update_options" />
+      <input type="hidden" name="action" value="wfs_update_options" />
         <p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" /></p>
     </form></p>
   </div>
