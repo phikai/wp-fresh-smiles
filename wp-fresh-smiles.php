@@ -37,3 +37,47 @@ wfs_create_table() {
   add_option( "wfs_db_version", $wfs_db_verison );
 }
 register_activation_hook( __FILE__, 'wfs_create_table' );
+
+//Add our Admin Menu
+add_action('admin_menu', 'wfs_menu');
+function wfs_menu() {
+  add_options_page('WP Fresh Smiles', 'WP Fresh Smiles', 'manage_options', 'wp-fresh-smiles', 'wfs_admin');
+}
+
+//Setup Paths and API
+require_once( plugin_dir_path( __FILE__ ) . "inc/FreshdeskRest.php" );
+
+function wfs_admin() {
+?>
+  <div class="wrap">
+    <h2>WP Fresh Smiles</h2>
+    <p><form method="post" action="">
+      <table class="form-table"><tbody>
+        <tr valign="top">
+          <th scope="row"><label for="wfs_freshdesk_url">Freshdesk Subdomain:</label></th>
+          <td>
+            <input type="text" name="wfs_freshdesk_url" value="REPLACE THIS LATER" class="regular-text code" />
+            <span class="description">Your Freshdesk Subdomain. <code>XXXXXXXXXXXX.freshdesk.com</code></span>
+          </td>
+        </tr>
+        <tr valign="top">
+          <th scope="row"><label for="wfs_freshdesk_api">Freshdesk API Key:</label></th>
+          <td>
+            <input type="text" name="wfs_freshdesk_api" value="REPLACE THIS LATER" class="regular-text code" />
+            <span class="description">Your Freshdesk API Key</span>
+          </td>
+        </tr>
+        <tr valign="top">
+          <th scope="row"><label for="wfs_freshdesk_view">Freshdesk Ticket View ID:</label></th>
+          <td>
+            <input type="text" name="wfs_freshdesk_view" value="REPLACE THIS LATER" class="regular-text code" />
+            <span class="description">Your Freshdesk Ticket View ID</span>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <input type="hidden" name="action" value="toz_rk_update_options" />
+        <p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" /></p>
+    </form></p>
+  </div>
+<?php }
