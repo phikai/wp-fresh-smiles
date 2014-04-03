@@ -48,6 +48,8 @@ function wfs_menu() {
 require_once( plugin_dir_path( __FILE__ ) . "inc/FreshdeskRest.php" );
 
 function wfs_admin() {
+  //Update Options
+  if ( isset($_POST['action']) && ( $_POST['action'] == 'wfs_update_options' ) ) {
 ?>
   <div class="wrap">
     <h2>WP Fresh Smiles</h2>
