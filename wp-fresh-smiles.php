@@ -29,7 +29,7 @@ wfs_create_table() {
     PRIMARY KEY (`id`),
     UNIQUE KEY `ticket_id` (`ticket_id`),
     KEY `survey_updated_at` (`survey_updated_at`)
-  ) ENGINE=InnoDB AUTO_INCREMENT=31159 DEFAULT CHARSET=latin1;";
+  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;";
 
   require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
   dbDelta( $sql );
