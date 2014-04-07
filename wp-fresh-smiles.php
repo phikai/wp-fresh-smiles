@@ -12,7 +12,7 @@ Author URI: http://www.kaiarmstrong.com
 global $wfs_db_version
 $wfs_db_version = "1.0";
 
-wfs_create_table() {
+wfs_setup() {
   global $wpdb;
   global $wfs_db_version;
 
@@ -35,8 +35,11 @@ wfs_create_table() {
   dbDelta( $sql );
 
   add_option( "wfs_db_version", $wfs_db_verison );
+  add_option( "wfs_freshdesk_url", "" );
+  add_option( "wfs_freshdesk_api", "" );
+  add_option( "wfs_freshdesk_view", "" );
 }
-register_activation_hook( __FILE__, 'wfs_create_table' );
+register_activation_hook( __FILE__, 'wfs_setup' );
 
 //Add our Admin Menu
 add_action('admin_menu', 'wfs_menu');
@@ -50,6 +53,7 @@ require_once( plugin_dir_path( __FILE__ ) . "inc/FreshdeskRest.php" );
 function wfs_admin() {
   //Update Options
   if ( isset($_POST['action']) && ( $_POST['action'] == 'wfs_update_options' ) ) {
+
 ?>
   <div class="wrap">
     <h2>WP Fresh Smiles</h2>
