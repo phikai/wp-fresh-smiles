@@ -9,7 +9,7 @@ Version: 0.1.0
 Author URI: http://www.kaiarmstrong.com
 */
 
-global $wfs_db_version
+global $wfs_db_version;
 $wfs_db_version = "1.0";
 
 wfs_setup() {
