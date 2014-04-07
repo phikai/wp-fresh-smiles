@@ -40,6 +40,25 @@ class wfs_smiles_widget extends WP_Widget {
         "
       );
 
+      foreach ( $ratings as $rating )
+        if ( $rating->survey_rating == '1' ) {
+          echo '<div class="overall">';
+          echo '<i class="overall-score icon-smile happy"></i> <label class="label happy-score">' . $rating->count . '% said AWESOME!</label>';
+          echo '</div>';
+        }
+        else if ( $rating->survey_rating == '2' ) {
+          echo '<ul class="small-block-grid-2">';
+          echo '<li class="rating-text"><i class="icon-2x icon-meh meh"></i> ' . $rating->count . ' said just OK</li>';
+        }
+        else if ( $rating->survey_rating == '3' ) {
+          echo '<li class="rating-text"><i class="icon-2x icon-frown unhappy"></i> ' . $rating->count . ' said not good</li>';
+          echo '</ul>';
+        }
+        else {
+          //Do Nothing
+        }
+      }
+
       //set_transient( 'wfs-content', $wfs_content, HOUR_IN_SECONDS );
     }
 
