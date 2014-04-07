@@ -138,7 +138,7 @@ function wfs_schedule_event() {
       update_option("wfs_last_message", "API Limit Reached");
       break;
     } else {
-      //INSERT THE DATA TO THE DATABASE!
+      $wpdb->query( $result );
     }
   }
 
