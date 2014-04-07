@@ -121,6 +121,8 @@ function wfs_schedule_activate() {
 
 //This is the actual core of the schedule
 function wfs_schedule_event() {
+  global $wpdb;
+
   $fd = new FreshdeskRest( get_option('wfs_freshdesk_url'), get_option('wfs_freshdesk_api') );
   if ( $fd->getLastHttpStatus() != 200 ) {
     exit();
