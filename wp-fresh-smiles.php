@@ -81,21 +81,21 @@ function wfs_admin() {
         <tr valign="top">
           <th scope="row"><label for="wfs_freshdesk_url">Freshdesk Subdomain:</label></th>
           <td>
-            <input type="text" name="wfs_freshdesk_url" value="REPLACE THIS LATER" class="regular-text code" />
-            <span class="description">Your Freshdesk Subdomain. <code>XXXXXXXXXXXX.freshdesk.com</code></span>
+          <input type="text" name="wfs_freshdesk_url" value="<?php echo( get_option('wfs_freshdesk_url') ); ?>" class="regular-text code" />
+            <span class="description">Your Freshdesk URL. <code>XXXXXXXXXXXX.freshdesk.com</code></span>
           </td>
         </tr>
         <tr valign="top">
           <th scope="row"><label for="wfs_freshdesk_api">Freshdesk API Key:</label></th>
           <td>
-            <input type="text" name="wfs_freshdesk_api" value="REPLACE THIS LATER" class="regular-text code" />
+          <input type="text" name="wfs_freshdesk_api" value="<?php echo( get_option('wfs_freshdesk_api') ); ?>" class="regular-text code" />
             <span class="description">Your Freshdesk API Key</span>
           </td>
         </tr>
         <tr valign="top">
           <th scope="row"><label for="wfs_freshdesk_view">Freshdesk Ticket View ID:</label></th>
           <td>
-            <input type="text" name="wfs_freshdesk_view" value="REPLACE THIS LATER" class="regular-text code" />
+          <input type="text" name="wfs_freshdesk_view" value="<?php echo( get_option('wfs_freshdesk_view') ); ?>" class="regular-text code" />
             <span class="description">Your Freshdesk Ticket View ID</span>
           </td>
         </tr>
