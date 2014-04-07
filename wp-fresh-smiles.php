@@ -38,6 +38,7 @@ wfs_setup() {
   add_option( "wfs_freshdesk_url", "" );
   add_option( "wfs_freshdesk_api", "" );
   add_option( "wfs_freshdesk_view", "" );
+  add_option( "wfs_last_message", "" );
 }
 register_activation_hook( __FILE__, 'wfs_setup' );
 
@@ -122,4 +123,25 @@ function wfs_schedule_event() {
     exit();
   }
 
+  //Get Closed Tickets for Survey Checks
+  $tickets = theTickets( $fd, get_option('wfs_freshdesk_view') );
+
+  foreach( $tickets as $i ) {
+    $result = theTicketSurvey( $fd, $i );
+    if ( $result == "stop" ) {
+      update_option("wfs_last_message", "No Ticket $i");
+      break;
+    } else if ( $result == "danger" ) {
+      update_option("wfs_last_message", "DANGER WILL ROBINSON, DANGER");
+      break;
+    } else if ( $result == "api_limit" ) {
+      update_option("wfs_last_message", "API Limit Reached");
+      break;
+    } else {
+      //INSERT THE DATA TO THE DATABASE!
+    }
+  }
+
+  //Everything Worked
+  update_option("wfs_last_message", "Great Success!");
 }
