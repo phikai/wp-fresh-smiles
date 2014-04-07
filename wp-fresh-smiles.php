@@ -51,6 +51,14 @@ function wfs_menu() {
 require_once( plugin_dir_path( __FILE__ ) . "inc/FreshdeskRest.php" );
 
 function wfs_admin() {
+  //API test
+  $fd = new FreshdeskRest( get_option('wfs_freshdesk_url'), get_option('wfs_freshdesk_api') );
+  if ( $fd->getLastHttpStatus() != 200 ) {
+    echo "Unable to connect to FreshDesk";
+  } else {
+    echo "Connection made to FreshDesk";
+  }
+
   //Update Options
   if ( isset($_POST['action']) && ( $_POST['action'] == 'wfs_update_options' ) ) {
     if ( isset($_POST['wfs_freshdesk_url']) ) { update_option('wfs_freshdesk_url', $_POST['wfs_freshdesk_url']); }
