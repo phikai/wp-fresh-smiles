@@ -40,7 +40,7 @@ class wfs_smiles_widget extends WP_Widget {
         "
       );
 
-      foreach ( $ratings as $rating )
+      foreach ( $ratings as $rating ) {
         if ( $rating->survey_rating == '1' ) {
           echo '<div class="overall">';
           echo '<i class="overall-score icon-smile happy"></i> <label class="label happy-score">' . $rating->count . '% said AWESOME!</label>';
