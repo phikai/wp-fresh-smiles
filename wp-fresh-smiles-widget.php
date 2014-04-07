@@ -26,11 +26,21 @@ class wfs_smiles_widget extends WP_Widget {
       echo $before_title . $title . $after_title;
 
     $wfs_content = get_transient( 'wfs-content' );
-    if ( empty( $wfs_content) ) {
+    if ( empty( $wfs_content ) ) {
+      $ratings = $wpdb->get_results(
+        "
+        SELECT count(1) as count, survey_rating
+        FROM (
+          SELECT survey_rating
+          FROM $wpdb->freshsmiles
+          WHERE NOT survey_rating = 'NULL'
+          ORDER BY survey_updated_at
+          DESC LIMIT 100
+        ) t GROUP BY survey_rating;
+        "
+      );
 
-      //THE WIDGET CONTENT GOES HERE... YOU NEED TO BUILD THIS
-
-        set_transient( 'wfs-content', $wfs_content, HOUR_IN_SECONDS );
+      //set_transient( 'wfs-content', $wfs_content, HOUR_IN_SECONDS );
     }
 
     echo $wfs_content;
