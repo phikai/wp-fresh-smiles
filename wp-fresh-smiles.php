@@ -49,6 +49,7 @@ function wfs_menu() {
 
 //Setup Paths and API
 require_once( plugin_dir_path( __FILE__ ) . "inc/FreshdeskRest.php" );
+require_once( plugin_dir_path( __FILE__ ) . "inc/lib.php" );
 
 function wfs_admin() {
   //API test
@@ -116,5 +117,9 @@ function wfs_schedule_activate() {
 
 //This is the actual core of the schedule
 function wfs_schedule_event() {
-  //STUFF HAPPENS HERE
+  $fd = new FreshdeskRest( get_option('wfs_freshdesk_url'), get_option('wfs_freshdesk_api') );
+  if ( $fd->getLastHttpStatus() != 200 ) {
+    exit();
+  }
+
 }
