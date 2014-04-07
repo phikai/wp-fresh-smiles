@@ -28,6 +28,8 @@ class wfs_smiles_widget extends WP_Widget {
     $wfs_content = get_transient( 'wfs-content' );
     if ( empty( $wfs_content) ) {
 
+      //THE WIDGET CONTENT GOES HERE... YOU NEED TO BUILD THIS
+
         set_transient( 'wfs-content', $wfs_content, HOUR_IN_SECONDS );
     }
 
