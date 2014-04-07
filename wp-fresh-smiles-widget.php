@@ -14,6 +14,7 @@ class wfs_smiles_widget extends WP_Widget {
   }
 
   function widget( $args, $instance ) {
+    global $wpdb;
     extract( $args );
 
     //Our variables from the widget settings.
