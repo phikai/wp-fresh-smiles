@@ -52,6 +52,9 @@ function wfs_menu() {
 require_once( plugin_dir_path( __FILE__ ) . "inc/FreshdeskRest.php" );
 require_once( plugin_dir_path( __FILE__ ) . "inc/lib.php" );
 
+//Lets get us a Widget
+require_once( plugin_dir_path( __FILE__ ) . "wp-fresh-smiles-widget.php" );
+
 function wfs_admin() {
   //API test
   $fd = new FreshdeskRest( get_option('wfs_freshdesk_url'), get_option('wfs_freshdesk_api') );
