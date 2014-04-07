@@ -53,7 +53,13 @@ require_once( plugin_dir_path( __FILE__ ) . "inc/FreshdeskRest.php" );
 function wfs_admin() {
   //Update Options
   if ( isset($_POST['action']) && ( $_POST['action'] == 'wfs_update_options' ) ) {
-
+    if ( isset($_POST['wfs_freshdesk_url']) ) { update_option('wfs_freshdesk_url', $_POST['wfs_freshdesk_url']); }
+    if ( isset($_POST['wfs_freshdesk_api']) ) { update_option('wfs_freshdesk_api', $_POST['wfs_freshdesk_api']); }
+    if ( isset($_POST['wfs_freshdesk_view']) ) { update_option('wfs_freshdesk_view', $_POST['wfs_freshdesk_view']); }
+    wfs_schedule_activate();
+  } else {
+    //Do Nothing
+  }
 ?>
   <div class="wrap">
     <h2>WP Fresh Smiles</h2>
@@ -87,3 +93,20 @@ function wfs_admin() {
     </form></p>
   </div>
 <?php }
+
+//Executes the Schedule Event Function
+add_action("wfs_schedule", "wfs_schedule_event");
+
+//This sets up the wp-cron function
+function wfs_schedule_activate() {
+  if ( !wp_next_scheduled( 'wfs_schedule' ) ) {
+    wp_schedule_event(time(), 'hourly', 'wfs_schedule');
+  } else {
+    //Do Nothing
+  }
+}
+
+//This is the actual core of the schedule
+function wfs_schedule_event() {
+  //STUFF HAPPENS HERE
+}
