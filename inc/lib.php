@@ -20,6 +20,9 @@ function theTickets($fd, $viewId) {
 //The main loop used to get survey data
 function theTicketSurvey($fd, $i) {
   global $wpdb;
+  if ( !isset($wpdb->freshsmiles) ) {
+    $wpdb->freshsmiles = $table_prefix . 'freshsmiles';
+  }
   $json = $fd->getTicketSurvey($i);
   $response = $fd->getLastHttpResponseText();
 
