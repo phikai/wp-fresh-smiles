@@ -21,7 +21,7 @@ function theTickets($fd, $viewId) {
 function theTicketSurvey($fd, $i) {
   global $wpdb;
   if ( !isset($wpdb->freshsmiles) ) {
-    $wpdb->freshsmiles = $table_prefix . 'freshsmiles';
+    $wpdb->freshsmiles = $wpdb->prefix . 'freshsmiles';
   }
   $json = $fd->getTicketSurvey($i);
   $response = $fd->getLastHttpResponseText();

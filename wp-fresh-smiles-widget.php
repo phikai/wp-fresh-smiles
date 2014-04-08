@@ -16,7 +16,7 @@ class wfs_smiles_widget extends WP_Widget {
   function widget( $args, $instance ) {
     global $wpdb;
     if ( !isset($wpdb->freshsmiles) ) {
-      $wpdb->freshsmiles = $table_prefix . 'freshsmiles';
+      $wpdb->freshsmiles = $wpdb->prefix . 'freshsmiles';
     }
     extract( $args );
 
