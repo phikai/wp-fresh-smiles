@@ -40,6 +40,12 @@ function wfs_setup() {
 }
 register_activation_hook( __FILE__, 'wfs_setup' );
 
+//Add the font-awesome CSS
+function wfs_scripts() {
+  wp_enqueue_style( 'font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' );
+}
+add_action( 'wp_enqueue_scripts', 'wfs_scripts' );
+
 //Add our Admin Menu
 add_action('admin_menu', 'wfs_menu');
 function wfs_menu() {
