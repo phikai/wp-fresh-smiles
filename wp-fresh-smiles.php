@@ -12,7 +12,7 @@ Author URI: http://www.kaiarmstrong.com
 function wfs_setup() {
   global $wpdb;
   global $wfs_db_version;
-  wfs_db_version = "1.0";
+  $wfs_db_version = "1.0";
 
   $table_name = $wpdb->prefix . 'freshsmiles';
 
